@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+            
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper #0097a7 cyan darken-2">        
+          <a href="#" class="brand-logo" h1 style="font-family: Arial, Helvetica, sans-serif;" h1 style="font-size: 900%;"><b>Fake Profile Detection</b></a>
+          <ul id="nav-mobile" class="right">
+            <li id="loginli"><a class="modal-trigger" href="#modal2"><b>Login</b></a></li>
+            <li  id="signupli"><a class="modal-trigger" href="#modal1"><b>Signup</b></a></li>
+            <li  id="logoutli"><a onclick="logout()"><b>Logout</b></a></li>
+          </ul>
+        </div>
+      </nav>
+    <!--Signup Modal -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <center><h3 style="font-family: Courier New;"><b>Signup</b></center></h3>
+      <center> <i class="material-icons medium">account_circle</center> </i>
+      <form autocomplete="off" onsubmit="signup(event)">
+        <input type="email" id="signupEmail" placeholder="email" />
+        <input type="password" id="signupPassword" placeholder="password" />
+        <br>
+        <center><button class="btn waves-effect #b71c1c red darken-4" type="submit">submit</center></button> 
+      </form>
+      <br> <center><button class="btn waves-effect blue" onclick="loginWithGoogle()">Login with google</center></button>
+      
+     
+    </div>
+  </div>
+         
+    <!--login Modal -->
+  <div id="modal2" class="modal">
+    
+    <div class="modal-content">  
+     <center><b> <h3 style="font-family: Courier New;">Login</b></center></h3>
+      <style>
+        /* Style to center align the image */
+        .center-align {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+        
+        
+    </style>
+    <div class="container">
+     <center> <i class="material-icons medium">account_circle</center> </i>
+    </div>
+    
+      <form autocomplete="off" onsubmit="login(event)">
+        <input type="email" id="loginEmail" placeholder="email" />
+        <input type="password" id="loginPassword" placeholder="password" />
+        <br>
+        <center><button class="btn waves-effect #b71c1c red darken-4" type="submit">submit</center></button>   
+      </form>
+      <br>
+      <center><button class="btn waves-effect blue" onclick="loginWithGoogle()">Login with google</center></button>
+      
+
+    </div>
+  </div>
+    <!--edit profile -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Edit your details</h4>
+      <div class="file-field input-field">
+        <div class="btn #fbc02d yellow darken-2">
+          <span>File</span>
+          <input type="file" accept="image/*" onchange="uploadImage(event)" />
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <form autocomplete="off" id="editProfile" onsubmit="updateUserProfile(event)">
+        <input type="email" name="profileEmail" placeholder="email" />
+        <input type="text" name="name" placeholder="name" />
+        <input type="text" name="phoneno" placeholder="phoneno" />
+        <input type="text" name="specialty" placeholder="speciality" />
+        <input type="text" name="prorfolioUrl" placeholder="protfolio url" />
+        <input type="text" name="experience" placeholder="experience" />
+
+        <button class="btn waves-effect #b71c1c red darken-4" type="submit">submit</button>   
+      </form>
+  
+      
+     
+    </div>
+  </div>
+
+
+  <div class="center">
+    <img src="/Image.jpg" height="700px" width="100%" >
+    <div class="userDetails"></div>
+  </div>
+         
+  <table id="table" style="display: none;">
+    <thead>
+      <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>speciality</th>
+          <th>ex</th>
+          <th>portfolio</th>
+      </tr>
+    </thead>
+
+    <tbody id="tbody">
+     
+    </tbody>
+  </table>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+</script>  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "PUT YOUT CREDENTIALS",
+    authDomain: "PUT YOUT CREDENTIALS",
+    projectId: "PUT YOUT CREDENTIALS",
+    storageBucket: "PUT YOUT CREDENTIALS",
+    messagingSenderId: "PUT YOUT CREDENTIALS",
+    appId: "PUT YOUT CREDENTIALS"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="./scripts/auth.js"></script>
+<script src="./scripts/firestore-db.js" ></script>
+</body>
+</html>
